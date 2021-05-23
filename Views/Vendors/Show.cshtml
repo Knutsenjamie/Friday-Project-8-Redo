@@ -1,14 +1,14 @@
 @using PierresOrderForm.Models;
 
-<h3>Here are all orders for this vendor:</h3>
+<h3>Here are all the orders (and their details) for this vendor:</h3>
 
 <ol>
 @foreach (Orders orders in @Model["orders"])
 {
-  <li><a href='/vendors/@Model["vendors"].Id/orders/@orders.Id'>@orders.OrdersTitle</a></li>
-  <li><a href='/vendors/@Model["vendors"].Id/orders/@orders.Id'>@orders.OrdersDescription</a></li>
-  <li><a href='/vendors/@Model["vendors"].Id/orders/@orders.Id'>@orders.OrdersDate</a></li>
-  <li><a href='/vendors/@Model["vendors"].Id/orders/@orders.Id'>@orders.OrdersPrice</a></li>
+  <ul>@orders.OrdersTitle</ul>
+  <ul>@orders.OrdersDescription</ul>
+  <ul>@orders.OrdersDate</ul>
+  <ul>@orders.OrdersPrice</ul>
 }
 </ol>
 
