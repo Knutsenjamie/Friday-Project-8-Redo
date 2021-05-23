@@ -34,9 +34,24 @@ namespace PierresOrderForm.Controllers
       Dictionary<string, object> model = new Dictionary<string, object>();
       Vendors selectedVendors = Vendors.Find(id);
       List<Orders> vendorsOrders = selectedVendors.Orders;
-      model.Add("Vendor", selectedVendors);
-      model.Add("Order", vendorsOrders);
+      model.Add("vendors", selectedVendors);
+      model.Add("orders", vendorsOrders);
       return View(model);
     }
+
+        
+    [HttpPost("/vendors/{vendorsID}/orders")]
+    public ActionResult Create(int vendorsId, string ordersTitle, string ordersDescription, string ordersDate, string ordersPrice)
+    {
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Vendors selectedVendors =  Vendors.Find(vendorsId);
+      Orders newOrder = new Orders(ordersTitle, ordersDescription, ordersDate, ordersPrice);
+      selectedVendors.AddOrders(newOrder);
+      List<Orders> vendorsOrders = selectedVendors.Orders;
+      model.Add("orders", vendorsOrders);
+      model.Add("vendors", selectedVendors);
+      return View("Show", model);
+    }
+
    }
 }
