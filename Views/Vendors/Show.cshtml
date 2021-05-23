@@ -1,0 +1,17 @@
+@using PierresOrderForm.Models;
+
+<h3>Here are all orders for this vendor:</h3>
+
+<ol>
+@foreach (Orders orders in @Model["orders"])
+{
+  <li><a href='/vendors/@Model["vendors"].Id/orders/@orders.Id'>@orders.OrdersTitle</a></li>
+  <li><a href='/vendors/@Model["vendors"].Id/orders/@orders.Id'>@orders.OrdersDescription</a></li>
+  <li><a href='/vendors/@Model["vendors"].Id/orders/@orders.Id'>@orders.OrdersDate</a></li>
+  <li><a href='/vendors/@Model["vendors"].Id/orders/@orders.Id'>@orders.OrdersPrice</a></li>
+}
+</ol>
+
+<p><a href='/vendors/@Model["vendors"].Id/orders/new'>Add An Order</a></p>
+<p><a href='/categories'>Return to Vendors list</a></p>
+<p><a href='/'>Return to Home Page</a></p>
